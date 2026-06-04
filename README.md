@@ -49,4 +49,15 @@ pyinstaller --onefile --windowed --name "PDF限制移除工具" main.py
 
 ## 许可证
 
-MIT License
+本项目基于 **MIT Non-Commercial License** 发布，详见 [LICENSE](LICENSE)。
+
+**你可以：**
+- 免费使用、复制、修改、分发本软件
+- 用于个人、教育或非商业用途
+
+**你不能：**
+- 售卖本软件（原始版本或修改版本）
+- 将本软件作为付费产品或服务提供
+
+**商业使用：**
+- 如需将本软件用于商业目的，请联系作者获取授权
