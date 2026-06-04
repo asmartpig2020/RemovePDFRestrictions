@@ -22,7 +22,8 @@ class App:
 
         ttk.Button(top_frame, text="选择PDF文件", command=self._select_files).pack(side=tk.LEFT)
         ttk.Button(top_frame, text="选择文件夹", command=self._select_folder).pack(side=tk.LEFT, padx=5)
-        ttk.Button(top_frame, text="清空列表", command=self._clear_files).pack(side=tk.LEFT)
+        ttk.Button(top_frame, text="移除选中", command=self._remove_selected).pack(side=tk.LEFT)
+        ttk.Button(top_frame, text="清空列表", command=self._clear_files).pack(side=tk.LEFT, padx=5)
         ttk.Label(top_frame, text="(支持拖拽文件到列表)", foreground="gray").pack(side=tk.LEFT, padx=10)
 
         pw_frame = ttk.Frame(self.root, padding=(10, 0))
@@ -121,6 +122,17 @@ class App:
         if not folder:
             return
         self._add_folder(folder)
+
+    def _remove_selected(self):
+        sel = self.tree.selection()
+        if not sel:
+            messagebox.showwarning("提示", "请先选择要移除的文件")
+            return
+        for path in sel:
+            if path in self.files:
+                self.files.remove(path)
+            self.tree.delete(path)
+        self._set_info("")
 
     def _clear_files(self):
         self.files.clear()
