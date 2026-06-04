@@ -164,6 +164,10 @@ class App:
             except ValueError as e:
                 self.tree.set(path, "status", f"错误: {e}")
 
+        sel = self.tree.selection()
+        if sel:
+            self._on_select(None)
+
     def _remove_restrictions(self):
         sel = self.tree.selection()
         if not sel:
